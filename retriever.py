@@ -40,6 +40,11 @@ def build_qa_chain():
         "score_threshold": 0.3,  # only return chunks that are at least 30% similar
     }
     )
+    llm = ChatOpenAI(
+        model="gpt-4o-mini",   # cheap + fast (good for your project)
+        temperature=0,
+        openai_api_key=os.getenv("OPENAI_API_KEY"),
+    )
     return {"retriever": retriever, "llm": llm, "vectorstore": vectorstore}
 
 
